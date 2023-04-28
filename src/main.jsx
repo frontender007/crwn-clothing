@@ -1,13 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.scss'
-import { BrowserRouter } from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import "./index.scss";
+import { BrowserRouter } from "react-router-dom";
+import { UserProvider } from "./contexts/user-context";
+import { CartProvider } from "./contexts/cart-context";
+import { CategoriesProvider } from "./contexts/categories.context";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <CategoriesProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </CategoriesProvider>
+      </UserProvider>
     </BrowserRouter>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
